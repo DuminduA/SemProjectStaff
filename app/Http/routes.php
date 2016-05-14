@@ -33,3 +33,8 @@ Route::group(['middleware'=>['web']],function(){
 
 
 });
+
+Route::get('attendance','attendanceController@view');
+
+
+
