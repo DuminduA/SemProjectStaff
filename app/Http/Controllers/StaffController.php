@@ -44,16 +44,16 @@ class StaffController extends Controller
         $staff->adress2=$adress2;
         $staff->adress3=$adress3;
         $staff->adress4=$adress4;
-       // $staff->username=$username;
 
         $staff->save();
-
+        Auth::login($staff);
+        return redirect()->route('newItem');
 
     }
     public function postSignIn(Request $request){
 
         if(Auth::attempt(['email'=>$request['email'],'password'=>$request['password']])){
-            return redirect()->route('dashbord');
+            return redirect()->route('newItem');
         }
 
         else{

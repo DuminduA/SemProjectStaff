@@ -13,7 +13,7 @@
             <div class="row">
                 <div class="input-field col s6">
                     {{--<i class="material-icons">perm_identity</i>--}}
-                    <label for="first_name">Your Last Name</label>
+                    <label for="first_name">First Name</label>
                     <input class="validate" type="text" name="first_name" id="first_name">
                 </div>
                 <div class="input-field col s6">
@@ -58,17 +58,17 @@
                 </div>
                 <div class="input-field col-sm-6">
                     <input id="adress2" type="text" class="validate" name ='adress2'>
-                    <label for="adress2" >Adress1</label>
+                    <label for="adress2" >Adress2</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col-sm-6">
                     <input id="adress3" type="text" class="validate" name ='adress3'>
-                    <label for="adress3" >Adress1</label>
+                    <label for="adress3" >Adress3</label>
                 </div>
                 <div class="input-field col-sm-6">
                     <input id="adress4" type="text" class="validate" name ='adress4'>
-                    <label for="adress4" >Adress1</label>
+                    <label for="adress4" >Adress4</label>
                 </div>
             </div>
             <input type="hidden" name="_token" value="{{Session::token()}}">

@@ -26,7 +26,6 @@ class CreateStaffTable extends Migration
             $table->string('adress3');
             $table->string('adress4');
             $table->string('username');
-
         });
     }
 

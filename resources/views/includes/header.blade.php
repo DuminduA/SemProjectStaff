@@ -10,11 +10,11 @@
     <div class="nav-wrapper">
         <a href="#!" class="brand-logo">Logo</a>
         <ul class="right hide-on-med-and-down">
-            <li><a href="#">Signout</a></li>
+            <li><a href="{{URL::to('/signup')}}">Sign up</a></li>
             <li><a href="#">Mark Attendence</a></li>
-            <li><a href="#">Add New Item</a></li>
+            <li><a href="{{route('newItem')}}">Add New Item</a></li>
             <li><a href="#">Requests</a></li>
-            <li><a href="#">Inventory</a></li>
+            <li><a href="{{route('updateItems')}}">Inventory</a></li>
             <li><a href="#">Administrator</a></li>
 
 

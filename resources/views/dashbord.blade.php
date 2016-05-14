@@ -8,7 +8,7 @@
 */
 
 @section('title')
-    DashBord
+    DashBoard
 @endsection
 
 Successfully Signed Up.
