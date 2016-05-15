@@ -12,24 +12,37 @@
 */
 Route::group(['middleware'=>['web']],function(){
 
-    Route::get('/dashbord',[
+    Route::get('/dashbord',[                            //Go to DashBord
         'uses'=>"StaffController@getDashbord",
         'as'=> "dashbord"
     ]);
-    Route::get('/staffsignin', function () {
+    Route::get('/', function () {                       //Welcome Scree With Sign In 
         return view('staffsignin');
     });
-    Route::post('/staffsigninaction',[
+    Route::post('/staffsigninaction',[                  //Sign IN Request
         'uses'=>'StaffController@postSignIn',
         'as'=>'staffsigninaction'
     ]);
-    Route::post('/signupstaff',[
+//    Route::get('/signinform',function(){
+//        return view('staffsignin');
+//    }
+//        
+//    );
+    Route::post('/signupstaff',[                        //Sign up Request
         'uses'=>'StaffController@postSignUp',
         'as'=> 'signupstaff'
     ]);
-    Route::get('/signup', function () {
-        return view('createstaffmember');
-    });
+//    Route::get('/signup', function () {
+//        return view('createstaffmember');
+//    });
+    Route::get('/signup',[                              //Get The Sign Up Form
+        'uses'=>'StaffController@getSignUpForm',
+        'as'=> 'signupForm'
+    ]);
+    Route::get('/signout', [
+        'uses'=> 'StaffController@staffSignOut',
+        'as'=>'signout'
+    ]);
 
 
 });
