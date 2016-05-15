@@ -28,11 +28,13 @@
 <script src="{{ URL:: to ('src/js/edit.js') }}"></script>
 
 @include('includes.header')
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 
 <div class="container">
+
     @yield('contain')
 
 </div>

@@ -1,32 +1,33 @@
-@extends('layouts.master)
+@extends('layouts.master')
 
 
-@section('content')
-    <table>
+@section('contain')
+    <table class="striped">
         <thead>
         <tr>
-            <th data-field="id">Name</th>
-            <th data-field="name">Item Name</th>
-            <th data-field="price">Item Price</th>
+            <th data-field="date">date</th>
+            <th data-field="sid">staff_id</th>
+            <th data-field="attendance">attendance</th>
+            <th data-field="arrival">arrival time</th>
+
         </tr>
         </thead>
 
         <tbody>
+        @foreach($data as $item)
         <tr>
-            <td>Alvin</td>
-            <td>Eclair</td>
-            <td>$0.87</td>
+            <td>{{$item->date}}</td>
+            <td>{{$item->staff_id}}</td>
+            <td>
+                @if($item->attendance==1)
+                    {{'present'}}
+                @else
+                    {{'absent'}}
+                @endif
+                 </td>
+            <td>{{$item->arrival_time}}</td>
         </tr>
-        <tr>
-            <td>Alan</td>
-            <td>Jellybean</td>
-            <td>$3.76</td>
-        </tr>
-        <tr>
-            <td>Jonathan</td>
-            <td>Lollipop</td>
-            <td>$7.00</td>
-        </tr>
+        @endforeach
         </tbody>
     </table>
 

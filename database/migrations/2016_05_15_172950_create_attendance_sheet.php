@@ -12,12 +12,12 @@ class CreateAttendanceSheet extends Migration
      */
     public function up()
     {
-        Schema::create('attendance', function (Blueprint $table) {
+        Schema::create('attendances', function (Blueprint $table) {
             $table->increments('id');
             $table->date('date');
             $table->integer('staff_id')->unsigned()->index();
             $table->boolean('attendance');
-            $table->timestamp('arrival_time');
+            $table->time('arrival_time');
             $table->timestamps();
         });
     }

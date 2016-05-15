@@ -1,5 +1,5 @@
 <?php
-
+use App\Staff;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -35,6 +35,13 @@ Route::group(['middleware'=>['web']],function(){
 });
 
 Route::get('attendance','attendanceController@view');
+
+Route::get('markAttendance',function(){
+    $mStaff=Staff::all();
+    return view('markAttendance',['mStaff'=>$mStaff]);
+});
+
+Route::post('markAttendance','markAttendanceController@post');
 
 
 
