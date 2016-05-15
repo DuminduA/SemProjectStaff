@@ -2,7 +2,7 @@
 @extends('layouts.startPage')
 
 @section('title')
-    Sugn in Forum
+    Sign in Forum
 
 @endsection
 

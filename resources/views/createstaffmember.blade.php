@@ -16,7 +16,8 @@
             <div class="row">
                 <div class="input-field col s6">
                     {{--<i class="material-icons">perm_identity</i>--}}
-                    <label for="first_name">Your First Name</label>
+                    <label for="first_name">First Name</label>
+
                     <input class="validate" type="text" name="first_name" id="first_name">
                 </div>
                 <div class="input-field col s6">

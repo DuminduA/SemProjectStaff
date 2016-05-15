@@ -59,6 +59,7 @@ class StaffController extends Controller
 
         if(Auth::attempt(['username'=>$request['username'],'password'=>$request['password']])){
             return redirect()->route('dashbord');
+
         }
 
         else{
@@ -85,5 +86,6 @@ class StaffController extends Controller
 
         Auth::logout();
         return view('staffsignin');
+           // route('home');
     }
 }
