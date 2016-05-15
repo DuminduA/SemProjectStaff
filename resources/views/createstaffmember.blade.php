@@ -3,17 +3,21 @@
 @section('title')
     Welcome To Orchid Bookshop!
     @endsection
-
+    {{--{{Session::get('Pf_Id')}}--}}
     @section('contain')
             <!--<div class="welcome">Welcome To Our Store!!</div>-->
     <div class="row">
         <div class="col-sm-6"></div>
-        <h3>Sign Up Form</h3>
+        <div class="row">
+            <h3>Sign Up Form</h3>
+            <h4 aria-busy="true">Your Profile/Username Id Is..   : {{$Pf_Id}}   </h4>
+        </div>
         <form action="{{route('signupstaff')}}" method="post">
             <div class="row">
                 <div class="input-field col s6">
                     {{--<i class="material-icons">perm_identity</i>--}}
-                    <label for="first_name">Your Last Name</label>
+                    <label for="first_name">First Name</label>
+
                     <input class="validate" type="text" name="first_name" id="first_name">
                 </div>
                 <div class="input-field col s6">
@@ -52,27 +56,26 @@
                 </div>
             </div>
             <div class="row">
-                <div class="input-field col-sm-6">
+                <div class="input-field col s6">
                     <input id="adress1" type="text" class="validate" name ='adress1'>
                     <label for="adress1" >Adress1</label>
                 </div>
-                <div class="input-field col-sm-6">
+                <div class="input-field col s6">
                     <input id="adress2" type="text" class="validate" name ='adress2'>
-                    <label for="adress2" >Adress1</label>
+                    <label for="adress2" >Adress2</label>
                 </div>
             </div>
             <div class="row">
-                <div class="input-field col-sm-6">
+                <div class="input-field col s6">
                     <input id="adress3" type="text" class="validate" name ='adress3'>
-                    <label for="adress3" >Adress1</label>
+                    <label for="adress3" >Adress3</label>
                 </div>
-                <div class="input-field col-sm-6">
+                <div class="input-field col s6">
                     <input id="adress4" type="text" class="validate" name ='adress4'>
-                    <label for="adress4" >Adress1</label>
+                    <label for="adress4" >Adress4</label>
                 </div>
             </div>
             <input type="hidden" name="_token" value="{{Session::token()}}">
-            <button type="submit" class="btn waves-effect waves-light left submit " >Submit</button>
             <script type="text/javascript">
                 window.onload = function () {
                     document.getElementById("password1").onchange = validatePassword;
@@ -88,9 +91,10 @@
                         document.getElementById("password2").setCustomValidity('');
                 }
             </script>
+            <button type="submit" class="btn waves-effect waves-light left submit " >Submit</button>
+
         </form>
 
     </div>
 @endsection
-
 

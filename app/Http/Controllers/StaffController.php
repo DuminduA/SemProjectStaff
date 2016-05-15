@@ -8,9 +8,13 @@ use App\Http\Requests;
 use App\Staff;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\View\View;
+
 class StaffController extends Controller
 {
-    //
+
+
+    public $Pf_Id;
     public function getDashbord()
     {
         return view('dashbord');
@@ -18,9 +22,9 @@ class StaffController extends Controller
     }
 
 
-    public function postSignUp(Request $request){
+    public function postSignUp(Request $request) {
 
-
+        $Pf_Id=$this->create_Pf_Id();
         $first_name = $request['first_name'];
         $last_name = $request['last_name'];
         $email = $request['email'];
@@ -29,7 +33,7 @@ class StaffController extends Controller
         $adress1 = $request['adress1'];
         $adress2 = $request['adress2'];
         $adress3 = $request['adress3'];
-        $adress4 = $request['adress3'];
+        $adress4 = $request['adress4'];
 //        $privilageLevel=$request['privilageLevel'];
 //        $username=$request['username'];
 
@@ -44,16 +48,18 @@ class StaffController extends Controller
         $staff->adress2=$adress2;
         $staff->adress3=$adress3;
         $staff->adress4=$adress4;
+        $staff->username= $Pf_Id;
        // $staff->username=$username;
 
         $staff->save();
-
+        return redirect()->route('dashbord');
 
     }
     public function postSignIn(Request $request){
 
-        if(Auth::attempt(['email'=>$request['email'],'password'=>$request['password']])){
+        if(Auth::attempt(['username'=>$request['username'],'password'=>$request['password']])){
             return redirect()->route('dashbord');
+
         }
 
         else{
@@ -61,6 +67,26 @@ class StaffController extends Controller
             return Redirect::back()->with('Error',"Email and Password didn't match");
 
         }
+    }
+
+    public function create_Pf_Id(){
+
+        $staffCount=Staff::count();
+        global $Pf_Id;
+        $Pf_Id='PF00'.''.($staffCount+1);
+        return $Pf_Id;
+    }
+
+    public function getSignUpForm(){
+        
+        return view('createstaffmember',['Pf_Id'=>$this->create_Pf_Id()]);
+//        return redirect()->route('createstaffmember')->with('Pf_Id',$this->create_Pf_Id());
+    }
+    public function staffSignOut(){
+
+        Auth::logout();
+        return view('staffsignin');
+           // route('home');
     }
 }
 
