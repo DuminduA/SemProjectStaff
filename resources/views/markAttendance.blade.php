@@ -2,35 +2,26 @@
 
 @section('contain')
 
-    @if($errors)
-        <ul>
-           @foreach($errors->all() as $error)
-               <li>{{$error}}</li>
-            @endforeach
-        </ul>
-    @endif
-
-    <?php $staff_id; ?>
-
-    <form method = "post">
+    <form  action='{{route('markAttendance')}}' method = "post">
     <br/><br/>
     <div>
     <label>Select Staff Member</label>
-    <select class="browser-default" name="name" >
+
+    <select class="browser-default" name="sid" required>
         <option value="" disabled selected></option>
         <?php $counter=0; ?>
-        @foreach($mStaff as $s)
+        @foreach($m_Staff as $s)
         <?php $counter++; ?>
-        <option value="$counter">{{$s->first_name }} {{$s->last_name}}</option>
-            <?php $staff_id=$counter; ?>
+        <option name="counter" value="{{$s->id}}">{{$s->first_name }} {{$s->last_name}}</option>
         @endforeach
     </select>
 
 
     <br/><br/>
+
         <div>
             <label>mark attendance</label>
-            <select class="browser-default" name="attendance" >
+            <select class="browser-default" name="attendance" required>
                 <option value="" disabled selected></option>
                 <option value="1">present</option>
                 <option value="2">absent</option>
@@ -40,16 +31,24 @@
     <br/><br/>
     <div class="row">
         <div class="input-field col s6">
-            <input placeholder="hh:mm:ss" name="arrivalTime" type="text" class="validate">
+            <input placeholder="hh:mm:ss" name="arrivalTime" type="text" class="datepicker">
             <label for="first_name">Arrival Time</label>
         </div>
     </div>
         <br/><br/>
-        <div>
-        <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+        <div id="but2">
+        <button  class="btn waves-effect waves-light" type="submit" name="action">Submit
             <i class="material-icons right">send</i>
         </button>
         </div>
         <input type="hidden" name="_token" value="{{Session::token()}}">
     </form>
+    <form method="link" action="http://localhost/SemProjectStaff/public/attendance">
+        <div id="but1">
+            <button class="btn waves-effect waves-light" type="submit" name="action">View Attendance
+                <i class="material-icons right">send</i>
+            </button>
+        </div>
+    </form>
+
 @endsection

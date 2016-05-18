@@ -12,7 +12,16 @@
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 
-    <style>
+    <style type="text/css">
+        #but1{position:absolute;
+            top:520px;
+            left:800px;
+        }
+        #but2{position:absolute;
+            top:520px;
+            left:300px;
+        }
+
         nav {background-color: #2ca02c}
     </style>
 

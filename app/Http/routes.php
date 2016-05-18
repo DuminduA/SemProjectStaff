@@ -1,6 +1,7 @@
 <?php
 
 use App\Staff;
+use App\attendance;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -81,16 +82,26 @@ Route::group(['middleware'=>['web']],function(){
         'uses' => 'ItemController@addEditItem',
         'as' => 'addEditItem'
     ]);
-});
+
 
 Route::get('attendance','attendanceController@view');
 
-Route::get('markAttendance',function(){
+Route::get('/markAttendance',function(){
     $mStaff=Staff::all();
-    return view('markAttendance',['mStaff'=>$mStaff]);
+    return view('markAttendance',['m_Staff'=>$mStaff]);
 });
 
-Route::post('markAttendance','markAttendanceController@post');
+Route::post('markAttendance',
+    ['uses'=>'markAttendanceController@post',
+    'as'=>'markAttendance'
+]);
+
+Route::get('attendance/{att}',
+     ['uses'=>'attendanceController@delete',
+      'as'=>'attendance'
+     ]);
+});
+
 
 
 
