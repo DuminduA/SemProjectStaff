@@ -1,5 +1,20 @@
 <?php
 
+use App\Staff;
+use App\attendance;
+/*
+|--------------------------------------------------------------------------
+| Application Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register all of the routes for an application.
+| It's a breeze. Simply tell Laravel the URIs it should respond to
+| and give it the controller to call when that URI is requested.
+|
+*/
+
+
+
 Route::group(['middleware'=>['web']],function(){
 
     Route::get('/dashbord',[                            //Go to DashBord
@@ -67,4 +82,26 @@ Route::group(['middleware'=>['web']],function(){
         'uses' => 'ItemController@addEditItem',
         'as' => 'addEditItem'
     ]);
+
+
+Route::get('attendance','attendanceController@view');
+
+Route::get('/markAttendance',function(){
+    $mStaff=Staff::all();
+    return view('markAttendance',['m_Staff'=>$mStaff]);
 });
+
+Route::post('markAttendance',
+    ['uses'=>'markAttendanceController@post',
+    'as'=>'markAttendance'
+]);
+
+Route::get('attendance/{att}',
+     ['uses'=>'attendanceController@delete',
+      'as'=>'attendance'
+     ]);
+});
+
+
+
+

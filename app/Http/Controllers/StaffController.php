@@ -72,8 +72,8 @@ class StaffController extends Controller
     public function create_Pf_Id(){
 
         $staffCount=Staff::count();
-                    global $Pf_Id;
-                $Pf_Id='PF00'.''.($staffCount+1);
+        global $Pf_Id;
+        $Pf_Id='PF00'.''.($staffCount+1);
         return $Pf_Id;
     }
 
@@ -89,3 +89,4 @@ class StaffController extends Controller
            // route('home');
     }
 }
+
