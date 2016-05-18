@@ -12,30 +12,35 @@ class ItemController extends Controller{
     public function search( Request $request){
         $this->validate($request,[
             'search' => 'required',
+            'searchOption' => 'required'
         ]);
+        $check=Item::all();
+        if (sizeof($check)==0){
+            $items=array();
+            $heading = '"No Item in the Inventory"';
+            return view('updateItems', ['items' => $items,'heading'=>$heading]);
+        }
         $string = $request['search'];
-        $item = Item::where('name',$string)->first();
-        if (!isset($item)){
+        $option = $request['searchOption'];
+        if($option==1) {
+            $items = Item::where('name', $string)->get();
+        }else{
+            $items = Item::where('category', $string)->get();
+        }
+        if (!isset($items)){
             $items=array();
             $heading = '"Item Not Found"';
-            return view('searchItem', ['items' => $items,'heading'=>$heading]);
+            return view('updateItems', ['items' => $items,'heading'=>$heading]);
         }
-        $items = array();
-        $items[] = $item;
-        $heading = 'Available Items';
-        return view('searchItem', ['items' => $items,'heading'=>$heading]);
-    }
 
-    public function getsearchItem(){
-        $items = Item::all();
-        $heading = 'Available Items';
-        return view('searchItem',['items'=>$items,'heading'=>$heading]);
+        $heading = 'Inventory Items';
+        return view('updateItems', ['items' => $items,'heading'=>$heading]);
     }
-
 
     public function getUpdateItems(){
         $items = Item::all();
-        return view('updateItems',['items'=>$items]);
+        $heading = 'Inventory Items';
+        return view('updateItems',['items'=>$items,'heading'=>$heading]);
     }
 
     public function getNewItem(){
@@ -51,7 +56,7 @@ class ItemController extends Controller{
             'category' => 'required|max:20',
             'buyPrice' => 'required',
             'sellPrice' => 'required',
-            'count' => 'required'
+            'quantity' => 'required'
         ]);
         $staff=Auth::user();
         $item = new Item();
@@ -60,15 +65,15 @@ class ItemController extends Controller{
         $item->category = $request['category'];
         $item->buyPrice = $request['buyPrice'];
         $item->sellPrice = $request['sellPrice'];
-        $item->count = $request['count'];
+        $item->quantity = $request['quantity'];
         $staff->items()->save($item);
-        $massage = 'There was an error';
+        $message = 'There was an error';
         if ($item->save()){
-            $massage = 'Item added successfully';
+            $message = 'Item added successfully';
         };
 
 
-        return redirect()->route('newItem')->with(['message' => $massage]);
+        return redirect()->route('newItem')->with(['message' => $message]);
     }
 
     public function deleteItem($itemID){
@@ -90,18 +95,20 @@ class ItemController extends Controller{
             'category' => 'required|max:20',
             'buyPrice' => 'required',
             'sellPrice' => 'required',
-            'count' => 'required'
+            'quantity' => 'required'
         ]);
+        $staff=Auth::user();
 
         $item = new Item();
-        $staff=Auth::user();
         $item->itemID = $request['itemID'];
         $item->name = $request['name'];
         $item->category = $request['category'];
         $item->buyPrice = $request['buyPrice'];
         $item->sellPrice = $request['sellPrice'];
-        $item->count = $request['count'];
+        $item->quantity = $request['quantity'];
         $staff->items()->save($item);
+
+        //Item::where('id',$item->id)->update(['staff_id'=>$staff->id,'itemID'=>$request['itemID'],'name'=> $request['name'],'category'=> $request['category'],'buyPrice'=>$request['sellPrice'],'quantity'=> $request['quantity']]);
 
         return redirect()->route('updateItems');
     }

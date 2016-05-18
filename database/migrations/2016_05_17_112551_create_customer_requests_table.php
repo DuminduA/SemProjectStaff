@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateItemsTable extends Migration
+class CreateCustomerRequestsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,16 +12,15 @@ class CreateItemsTable extends Migration
      */
     public function up()
     {
-        Schema::create('items', function (Blueprint $table) {
+        Schema::create('customer_requests', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('itemID');
-            $table->string('name');
-            $table->string('category');
-            $table->float('buyPrice');
-            $table->float('sellPrice');
-            $table->integer('quantity');
-            $table->integer('staff_id');
             $table->timestamps();
+            $table->string('name');
+            $table->integer('customer_id');
+            $table->string('discribe');
+            $table->integer('quantity');
+            $table->date('due');
+            $table->integer('status');
         });
     }
 
@@ -32,7 +31,6 @@ class CreateItemsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('items');
-
+        Schema::drop('customer_requests');
     }
 }
