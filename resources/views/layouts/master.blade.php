@@ -11,7 +11,17 @@
 
     <!--Import Google Icon Font-->
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <style>
+
+    <style type="text/css">
+        #but1{position:absolute;
+            top:520px;
+            left:800px;
+        }
+        #but2{position:absolute;
+            top:520px;
+            left:300px;
+        }
+
         nav {background-color: #2ca02c}
     </style>
 
@@ -24,7 +34,9 @@
 {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>--}}
 <script type="text/javascript" src="{{ URL::asset('/src/js/materialize.min.js') }}"></script>
 
+
 <div class="container">
+
     @yield('contain')
 
 </div>
