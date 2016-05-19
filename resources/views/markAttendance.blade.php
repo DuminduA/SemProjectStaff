@@ -31,8 +31,8 @@
     <br/><br/>
     <div class="row">
         <div class="input-field col s6">
-            <input placeholder="hh:mm:ss" name="arrivalTime" type="text" class="datepicker">
-            <label for="first_name">Arrival Time</label>
+            <input placeholder="hh:mm:ss" name="arrivalTime" type="time" class="datepicker">
+            <label for="first_name"></label>
         </div>
     </div>
         <br/><br/>
@@ -43,7 +43,7 @@
         </div>
         <input type="hidden" name="_token" value="{{Session::token()}}">
     </form>
-    <form method="link" action="http://localhost/SemProjectStaff/public/attendance">
+    <form method="link" action="{{url("attendance")}}">
         <div id="but1">
             <button class="btn waves-effect waves-light" type="submit" name="action">View Attendance
                 <i class="material-icons right">send</i>

@@ -5,7 +5,7 @@
 
             <li><a href="{{route('signout')}}">Signout</a></li>
             <li><a href="{{URL::to('/signup')}}">Create Staff Member</a></li>
-            <li><a href="#">Mark Attendence</a></li>
+            <li><a href="{{route('markAttendance')}}">Mark Attendence</a></li>
             <li><a href="{{route('newOrders')}}">Order sub Sys</a></li>
             <li><a href="{{route('newItem')}}">Add New Item</a></li>
             <li><a href="{{route('displayRequest')}}">Requests</a></li>
