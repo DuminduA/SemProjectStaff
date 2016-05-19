@@ -38,7 +38,7 @@
                 <div class="input-field col s6">
                     {{--<i class="material-icons">phone</i>--}}
 
-                    <input id="phone" name="phone" type="tel" class="validate" required >
+                    <input id="phone" name="phone" type="tel" class="validate" min="10" max="10" required >
                     <label for="phone" class="active" data-error="Invalid phone" data-success="I Like it..">Enter Your phone Number</label>
                 </div>
             </div>
@@ -75,6 +75,15 @@
                     <label for="adress4" >Adress4</label>
                 </div>
             </div>
+            <div class="input-field col s6">
+                <select class="browser-default" name="level" required>
+                    <option value="1">Order Control</option>
+                    <option value="2">Inventory Control</option>
+                    <option value="3">Attendence Control</option>
+                    <option value="4">Administrator</option>
+
+                </select>
+            </div>
             <input type="hidden" name="_token" value="{{Session::token()}}">
             <script type="text/javascript">
                 window.onload = function () {
@@ -95,6 +104,10 @@
 
         </form>
 
+    </div>
+    <div class="error">
+
+        {{Session::get('Error')}}
     </div>
 @endsection
 

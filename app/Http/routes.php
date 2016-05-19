@@ -36,6 +36,16 @@ Route::group(['middleware'=>['web']],function(){
         'as'=>'signout'
     ]);
 
+    Route::post('/passwordReset',
+        ['uses'=>'StaffController@resetPassword',
+            'as'=>'passwordReset'
+            //  'middleware'=> 'auth'
+        ]);
+    Route::get('/password/reset', function () {                 //get the Password reset Form
+        return view('passwordReset');
+        //'middleware'=> 'auth'
+    });
+
     Route::post('/addNewItem',[
         'uses' => 'ItemController@addNewItem',
         'as' => 'addNewItem'
@@ -67,4 +77,7 @@ Route::group(['middleware'=>['web']],function(){
         'uses' => 'ItemController@addEditItem',
         'as' => 'addEditItem'
     ]);
+    Route::get('/orders/new',[                      //get the new form with data
+        'uses'=>'OrderController@showNewOrders',
+        'as'=>'newOrders']);
 });
