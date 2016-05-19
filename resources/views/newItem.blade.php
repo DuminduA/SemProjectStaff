@@ -15,33 +15,32 @@
             </div>
             <form action="{{route('addNewItem')}}" method="post">
                 <div class="input-field col s6 ">
-                    <label for="itemID">Item ID NO.</label>
-                    <input class="validate " type="text" name="itemID" id="itemID" required>
+                    <label for="itemID" class="active">Item ID NO.</label>
+                    <input class="validate " type="number" name="itemID" id="itemID" required>
                 </div>
                 <div class="input-field col s6">
-                    <label for="name">Item Name</label>
-                    <input class="form-control" type="text" name="name" id="name" required>
+                    <label for="name" class="active">Item Name</label>
+                    <input class="active" type="text" name="name" id="name" required>
                 </div>
                 <div class="input-field col s6">
-                    <label for="category">Category</label>
-                    <input class="form-control" type="text" name="category" id="category" required>
+                    <label for="category" class="active">Category</label>
+                    <input class="active" type="text" name="category" id="category" required>
                 </div>
 
                 <div class="input-field col s6">
-                    <label for="buyPrice">Buying Price of one item</label>
+                    <label for="buyPrice" class="active">Buying Price of one item</label>
                     <input class="validate" type="number" name="buyPrice" id="buyPrice" required>
                 </div>
                 <div class="input-field col s6">
-                    <label for="sellPrice">Selling Price of one item</label>
+                    <label for="sellPrice" class="active">Selling Price of one item</label>
                     <input class="validate" type="number" name="sellPrice" id="sellPrice" required>
                 </div>
                 <div class="input-field col s6">
-                    <label for="count">Quantity</label>
-                    <input class="validate  " type="number" name="count" id="count">
+                    <label for="quantity" class="active">Quantity</label>
+                    <input class="validate  " type="number" name="quantity" id="quantity">
                 </div>
                 <div class="row">
                     <button type="submit" class="btn btn-primary">ADD</button>
-                    <a href="{{ URL::to('updateItems') }}" class="btn btn-primary">Display Table</a>
                 </div>
                 <input type="hidden" name="_token" value="{{ Session::token()}}">
             </form>

@@ -13,7 +13,7 @@
 
 
     <style>
-        nav {background-color: #fff94f}
+        nav {background-color: #78a0a5}
     </style>
 
 </head>

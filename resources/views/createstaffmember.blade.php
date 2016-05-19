@@ -16,14 +16,14 @@
             <div class="row">
                 <div class="input-field col s6">
                     {{--<i class="material-icons">perm_identity</i>--}}
-                    <label for="first_name">First Name</label>
+                    <label for="first_name" class="active">First Name</label>
 
                     <input class="validate" type="text" name="first_name" id="first_name">
                 </div>
                 <div class="input-field col s6">
                     {{--<i class="material-icons">perm_identity</i>--}}
                     <input id="last_name" type="text" class="validate valid" name="last_name">
-                    <label for="last_name">Last Name</label>
+                    <label for="last_name" class="active">Last Name</label>
                 </div>
             </div>
 
@@ -45,7 +45,7 @@
             <div class="row">
                 <div class="input-field col s6">
                     {{--<i class="material-icons">mod_edit</i>--}}
-                    <input id="password1" type="password" class="validate" name="password1" minlength="6" required>
+                    <input id="password1" type="password" class="validate" name="password1" minlength="6" required><br>
                     <label for="password1" data-error="Length Should Be Greater than 6 characters" >Password</label>
                 </div>
                 <!-- confirm password-->

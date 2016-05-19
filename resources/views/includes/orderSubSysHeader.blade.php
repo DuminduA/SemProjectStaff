@@ -5,9 +5,7 @@
 
             <li><a href="{{route('newOrders')}}">New Orders</a></li>
             <li><a href="{{URL::to('/signup')}}">Cancelled/Rejected</a></li>
-            <li><a href="#">Mark Attendence</a></li>
             <li><a href="{{route('newItem')}}"></a></li>
-            <li><a href="#">Requests</a></li>
             <li><a href="{{route('updateItems')}}">Processed</a></li>
             <li><a href="#">Administrator</a></li>
 

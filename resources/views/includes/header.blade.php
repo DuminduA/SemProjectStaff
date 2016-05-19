@@ -8,7 +8,7 @@
             <li><a href="#">Mark Attendence</a></li>
             <li><a href="{{route('newOrders')}}">Order sub Sys</a></li>
             <li><a href="{{route('newItem')}}">Add New Item</a></li>
-            <li><a href="#">Requests</a></li>
+            <li><a href="{{route('displayRequest')}}">Requests</a></li>
             <li><a href="{{route('updateItems')}}">Inventory</a></li>
             <li><a href="#">Administrator</a></li>
 

@@ -75,8 +75,8 @@ class StaffController extends Controller
     public function create_Pf_Id(){
 
         $staffCount=Staff::count();
-                    global $Pf_Id;
-                $Pf_Id='PF00'.''.($staffCount+1);
+        global $Pf_Id;
+        $Pf_Id='PF00'.''.($staffCount+1);
         return $Pf_Id;
     }
 
@@ -91,6 +91,7 @@ class StaffController extends Controller
         return view('staffsignin');
            // route('home');
     }
+
     public function resetPassword(Request $request){
 
         Auth::logout();                                                 //Logout user Better for sequrity

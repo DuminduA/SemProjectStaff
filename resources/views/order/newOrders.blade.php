@@ -2,7 +2,7 @@
 
 @section('title')
     New Orders
-    @endsection
+@endsection
 @section('body')
     @foreach($newOrders as $newOrder)
         <div class="row">
@@ -20,7 +20,8 @@
                 </div>
             </div>
         </div>
-   @stop
+    @endforeach
+@stop
 
 
 

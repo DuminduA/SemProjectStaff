@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateItemsTable extends Migration
+class CreateAttendancesSheet extends Migration
 {
     /**
      * Run the migrations.
@@ -12,15 +12,13 @@ class CreateItemsTable extends Migration
      */
     public function up()
     {
-        Schema::create('items', function (Blueprint $table) {
+        Schema::create('attendances', function (Blueprint $table) {
+
             $table->increments('id');
-            $table->integer('itemID');
-            $table->string('name');
-            $table->string('category');
-            $table->float('buyPrice');
-            $table->float('sellPrice');
-            $table->integer('quantity');
+            $table->date('date');
             $table->integer('staff_id');
+            $table->boolean('attendance');
+            $table->time('arrival_time')->nullable();
             $table->timestamps();
         });
     }
@@ -32,7 +30,6 @@ class CreateItemsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('items');
-
+        Schema::drop('attendance');
     }
 }

@@ -24,7 +24,7 @@
                 <div class="input-field col s6">
                     {{--<i class="material-icons">mode_edit</i>--}}
                     <input id="password" type="password" class="validate" name="password">
-                    <label for="password">Confirm Password</label>
+                    <label for="password" class="active">Confirm Password</label>
                 </div>
             </div>
 

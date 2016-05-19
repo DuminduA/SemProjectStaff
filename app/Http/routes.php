@@ -1,5 +1,20 @@
 <?php
 
+use App\Staff;
+use App\attendance;
+/*
+|--------------------------------------------------------------------------
+| Application Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register all of the routes for an application.
+| It's a breeze. Simply tell Laravel the URIs it should respond to
+| and give it the controller to call when that URI is requested.
+|
+*/
+
+
+
 Route::group(['middleware'=>['web']],function(){
 
     Route::get('/dashbord',[                            //Go to DashBord
@@ -15,18 +30,12 @@ Route::group(['middleware'=>['web']],function(){
         'uses'=>'StaffController@postSignIn',
         'as'=>'staffsigninaction'
     ]);
-//    Route::get('/signinform',function(){
-//        return view('staffsignin');
-//    }
-//        
-//    );
+
     Route::post('/signupstaff',[                        //Sign up Request
         'uses'=>'StaffController@postSignUp',
         'as'=> 'signupstaff'
     ]);
-//    Route::get('/signup', function () {
-//        return view('createstaffmember');
-//    });
+
     Route::get('/signup',[                              //Get The Sign Up Form
         'uses'=>'StaffController@getSignUpForm',
         'as'=> 'signupForm'
@@ -54,7 +63,7 @@ Route::group(['middleware'=>['web']],function(){
     Route::get('/newItem',[                     //to show the newItem page
         'uses' => 'ItemController@getnewItem',
         'as' => 'newItem',
-        'middleware'=>'auth'
+        //'middleware'=>'auth'
     ]);
 
     Route::get('/updateItems',[                   //to show the Item table page
@@ -77,7 +86,63 @@ Route::group(['middleware'=>['web']],function(){
         'uses' => 'ItemController@addEditItem',
         'as' => 'addEditItem'
     ]);
+
     Route::get('/orders/new',[                      //get the new form with data
         'uses'=>'OrderController@showNewOrders',
         'as'=>'newOrders']);
+    
+    Route::post('/search',[                              //Search Results
+        'uses' => 'ItemController@search',
+        'as' => 'search'
+    ]);
+
+    Route::get('/displayRequest',[
+        'uses'=>'CustomerRequestController@displayRequest',
+        'as'=>'displayRequest',
+        //'middleware' => 'auth'
+    ]);
+
+    Route::post('/requestsearch',[
+        'uses'=>'CustomerRequestController@requestsearch',
+        'as'=>'requestsearch',
+        //'middleware' => 'auth'
+    ]);
+
+    Route::get('/complete/{ID}',[
+        'uses'=>'CustomerRequestController@complete',
+        'as'=>'complete'
+    ]);
+    
+    Route::get('/reject/{ID}',[
+        'uses'=>'CustomerRequestController@reject',
+        'as'=>'reject'
+    ]);
+    
+    Route::get('/oldRequest',[
+        'uses'=>'CustomerRequestController@oldRequest',
+        'as'=>'oldRequest'
+    ]);
+
+
+    Route::get('attendance','attendanceController@view');
+    
+    Route::get('/markAttendance',function(){
+        $mStaff=Staff::all();
+        return view('markAttendance',['m_Staff'=>$mStaff]);
+    });
+    
+    Route::post('markAttendance',
+        ['uses'=>'markAttendanceController@post',
+        'as'=>'markAttendance'
+    ]);
+    
+    Route::get('attendance/{att}',
+         ['uses'=>'attendanceController@delete',
+          'as'=>'attendance'
+         ]);
+
 });
+
+
+
+
