@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Auth;
 
 class AdminMiddleware
 {
@@ -15,6 +16,13 @@ class AdminMiddleware
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+        if (Auth::user()->level==4) {
+            return $next($request);
+        }
+
+       else{
+           return redirect()->route('home')->with('Error','You Are Not Allowed!!');
+
+       }
     }
 }

@@ -9,7 +9,7 @@
 @section('contain')
 
         <div class="col-sm-6"></div>
-        <h3>Sign Up Form</h3>
+        <h3>Sign In Form</h3>
         <form action="{{route('staffsigninaction')}}" method="post">
             <div class="row">
                 <div class="input-field col s6">
