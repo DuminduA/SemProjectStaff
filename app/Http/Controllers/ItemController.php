@@ -66,14 +66,13 @@ class ItemController extends Controller{
         $item->buyPrice = $request['buyPrice'];
         $item->sellPrice = $request['sellPrice'];
         $item->quantity = $request['quantity'];
-        $staff->items()->save($item);
-        $message = 'There was an error';
+        $item->staff_id = $staff->id;
+        $message = 'There is an error.';
+        $item->save();
         if ($item->save()){
-            $message = 'Item added successfully';
-        };
-
-
-        return redirect()->route('newItem')->with(['message' => $message]);
+            $message = 'Successfully added';
+        }
+        return redirect()->route('newItem')->with(['message'=> $message]);
     }
 
     public function deleteItem($itemID){

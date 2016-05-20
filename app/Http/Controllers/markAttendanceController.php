@@ -51,8 +51,5 @@ class markAttendanceController extends Controller
             return view('markAttendance')->with('m_Staff', $m_Staff);        //return to markAttendance page
         }
     }
-
-
-
-
+    
 }

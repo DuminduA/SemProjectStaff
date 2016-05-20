@@ -43,7 +43,7 @@
         </div>
         <input type="hidden" name="_token" value="{{Session::token()}}">
     </form>
-    <form method="link" action="http://localhost/SemProjectStaff/public/attendance">
+    <form method="link" action="{{route('attendancetable')}}">
         <div id="but1">
             <button class="btn waves-effect waves-light" type="submit" name="action">View Attendance
                 <i class="material-icons right">send</i>

@@ -17,11 +17,6 @@ use App\attendance;
 
 Route::group(['middleware'=>['web']],function(){
 
-    Route::get('/dashbord',[                            //Go to DashBord
-        'uses'=>"StaffController@getDashbord",
-        'as'=> "dashbord"
-    ]);
-
     Route::get('/', function () {                       //Welcome screen And Home
         return view('staffsignin');
     })->name('home');
@@ -47,7 +42,8 @@ Route::group(['middleware'=>['web']],function(){
 
     Route::post('/addNewItem',[
         'uses' => 'ItemController@addNewItem',
-        'as' => 'addNewItem'
+        'as' => 'addNewItem',
+        'middleware'=>'auth'
     ]);
 
     Route::get('/newItem',[                     //to show the newItem page
@@ -126,6 +122,77 @@ Route::group(['middleware'=>['web']],function(){
          ['uses'=>'attendanceController@delete',
           'as'=>'attendance'
          ]);
+
+    Route::get('/attendancetable',
+        ['uses'=>'attendanceController@view',
+            'as'=>'attendancetable'
+        ]);
+
+    Route::get('/orderTable',[
+       'uses'=>'OrderController@getOrders',
+        'as'=>'orderTable'
+    ]);
+    
+    Route::get('/newTable',[
+        'uses'=>'OrderController@newOrders',
+        'as'=>'newTable'
+    ]);
+    
+    Route::get('/proceedOrders',[
+        'uses'=>'OrderController@proceedOrders',
+        'as'=>'proceedOrders'
+    ]);
+    
+    Route::get('/cancelOrders',[
+        'uses'=>'OrderController@cancelOrders',
+        'as'=>'cancelOrders'
+    ]);
+    
+    Route::get('/FinishOrders',[
+        'uses'=>'OrderController@FinishOrders',
+        'as'=>'FinishOrders'
+    ]);
+    
+    Route::get('/returnOrders',[
+        'uses'=>'OrderController@returnOrders',
+        'as'=>'returnOrders'
+    ]);
+    
+    Route::get('/returnAccept/{id}',[
+        'uses'=>'OrderController@returnAccept',
+        'as'=> 'returnAccept'
+    ]);
+    
+    Route::get('/returnReject/{id}',[
+        'uses'=>'OrderController@returnReject',
+        'as'=> 'returnReject'
+    ]);
+    
+    Route::get('/proceedCancel/{id}',[
+        'uses'=>'OrderController@proceedCancel',
+        'as'=> 'proceedCancel'
+    ]);
+
+    Route::get('/proceedFinish/{id}',[
+        'uses'=>'OrderController@proceedFinish',
+        'as'=> 'proceedFinish'
+    ]);
+    
+    Route::get('/newAccept/{id}',[
+        'uses'=>'OrderController@newAccept',
+        'as'=> 'newAccept'
+    ]);
+    
+    Route::get('/newReject/{id}',[
+        'uses'=>'OrderController@newReject',
+        'as'=> 'newReject'
+    ]);
+    
+    Route::get('/orderDetail/{id}',[
+        'uses'=>'OrderController@orderDetail',
+        'as'=> 'orderDetail'
+    ]);
+
 });
 
 

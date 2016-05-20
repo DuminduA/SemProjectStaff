@@ -36,7 +36,7 @@
                 </div>
                 <div class="input-field col s6">
                     <label for="quantity" class="active">Quantity</label>
-                    <input class="validate  " type="number" name="quantity" id="quantity" value="{{ $item->quantity }}">
+                    <input class="validate " min="1" type="number" name="quantity" id="quantity" value="{{ $item->quantity }}">
                 </div>
                 <div class="row">
                     <button type="submit" class="btn btn-primary">Edit</button>

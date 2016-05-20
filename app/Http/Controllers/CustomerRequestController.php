@@ -106,6 +106,16 @@ class CustomerRequestController extends Controller{
     public function oldRequest(){
 
         $requests = CustomerRequest::all();
+        if (!isset($requests)){
+            $complete = array();
+            $reject = array();
+            $comcus =array();
+            $rejcus=array();
+            $heading = "No Old Requests";
+            return view('oldRequest',['complete' => $complete,'reject'=>$reject,'comcus'=>$comcus,'rejcus'=>$rejcus,'heading' => $heading]);
+        }
+        $complete = array();
+        $reject = array();
         foreach ($requests as $request){
             if ($request->status==2){
                 $complete[]=$request;
@@ -114,14 +124,7 @@ class CustomerRequestController extends Controller{
                 $reject[]=$request;
             }
         }
-        if (!isset($complete)&&!isset($reject)) {
-            $complete = array();
-            $reject =array();
-            $comcus=array();
-            $rejcus=array();
-            $heading = "No Old Requests";
-            return view('staffRequest', ['complete' => $complete,'reject'=>$reject,'comcus'=>$comcus,'rejcus'=>$rejcus,'heading' => $heading]);
-        }
+
         $comcus =array();
         $rejcus=array();
         foreach ($complete as $com){
