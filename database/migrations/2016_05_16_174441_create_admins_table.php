@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAttendancesSheet extends Migration
+class CreateAdminsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,13 +12,12 @@ class CreateAttendancesSheet extends Migration
      */
     public function up()
     {
-        Schema::create('attendances', function (Blueprint $table) {
-
+        Schema::create('admins', function (Blueprint $table) {
             $table->increments('id');
-            $table->date('date');
-            $table->integer('staff_id');
-            $table->boolean('attendance');
-            $table->time('arrival_time')->nullable();
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->string('password', 60);
+            $table->rememberToken();
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ class CreateAttendancesSheet extends Migration
      */
     public function down()
     {
-        Schema::drop('attendance');
+        Schema::drop('admins');
     }
 }

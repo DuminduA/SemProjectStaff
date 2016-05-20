@@ -43,7 +43,7 @@
         </form>
 
 
-    <div class="row">
+    <div class="error">
         <div class="alert-danger">
             {{Session::get('Error')}}
         </div>

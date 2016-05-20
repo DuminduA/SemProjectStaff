@@ -11,4 +11,8 @@ class Order extends Model
         return $this->hasMany(CartItem::class);
     }
 
+    public function items(){
+
+        return $this->hasMany('App\Item');
+    }
 }

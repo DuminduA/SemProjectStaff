@@ -15,7 +15,6 @@
     <div class="nav-wrapper">
         <a href="#!" class="brand-logo">Logo</a>
         <ul class="right hide-on-med-and-down">
-
             <li><a href="{{route('newItem')}}">Add New Item</a></li>
             <li><a href="{{route('updateItems')}}">Inventory</a></li>
             <li><a class="dropdown-button" href="" data-activates="dropdown2">Orders Table<i class="material-icons right"></i></a></li>
