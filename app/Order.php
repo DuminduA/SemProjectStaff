@@ -15,4 +15,8 @@ class Order extends Model
 
         return $this->hasMany('App\Item');
     }
+    public function profit(){
+        
+        return $this->hasOne('App\Profit');
+    }
 }

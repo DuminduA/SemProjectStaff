@@ -33,7 +33,8 @@ Route::group(['middleware'=>['web']],function(){
 
     Route::get('/signup',[                              //Get The Sign Up Form
         'uses'=>'StaffController@getSignUpForm',
-        'as'=> 'signupForm'
+        'as'=> 'signupForm',
+        'middleware' => 'admin'
     ]);
     Route::get('/signout', [
         'uses'=> 'StaffController@staffSignOut',
@@ -53,7 +54,8 @@ Route::group(['middleware'=>['web']],function(){
     Route::post('/addNewItem',[
         'uses' => 'ItemController@addNewItem',
         'as' => 'addNewItem',
-        'middleware'=>'auth'
+        'middleware'=> 'auth'
+
     ]);
 
     Route::get('/newItem',[                     //to show the newItem page
@@ -83,10 +85,10 @@ Route::group(['middleware'=>['web']],function(){
         'as' => 'addEditItem'
     ]);
 
-    Route::get('/orders/new',[                      //get the new form with data
-        'uses'=>'OrderController@showNewOrders',
-        'as'=>'newOrders']);
-    
+//    Route::get('/orders/new',[                      //get the new form with data
+//        'uses'=>'OrderController@showNewOrders',
+//        'as'=>'newOrders']);
+
     Route::post('/search',[                              //Search Results
         'uses' => 'ItemController@search',
         'as' => 'search'
@@ -136,6 +138,12 @@ Route::group(['middleware'=>['web']],function(){
          ['uses'=>'attendanceController@delete',
           'as'=>'attendance'
          ]);
+
+    Route::get('administrator/profit',function(){
+
+        return view('administrator.profit');
+    }
+    );
 
     Route::get('/attendancetable',
         ['uses'=>'attendanceController@view',
@@ -206,7 +214,6 @@ Route::group(['middleware'=>['web']],function(){
         'uses'=>'OrderController@orderDetail',
         'as'=> 'orderDetail'
     ]);
-    
 });
 
 

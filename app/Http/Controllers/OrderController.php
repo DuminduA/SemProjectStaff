@@ -16,6 +16,7 @@ use Illuminate\View\View;
 
 class OrderController extends Controller
 {
+    
     public function getOrders(){
         $orders = Order::all();
         $heading = "Orders Table";
@@ -58,7 +59,7 @@ class OrderController extends Controller
         }
         if (!isset($newOrder)){
             $newOrder=array();
-            $heading = "No Proceed Orders";
+            $heading = "No Cancelled Orders";
             return view('orderTable',['orders'=>$newOrder, 'heading'=>$heading]);
         }
 

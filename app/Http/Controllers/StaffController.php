@@ -25,6 +25,14 @@ class StaffController extends Controller
 
     public function postSignUp(Request $request) {
 
+        $this->validate($request,[
+            'email'=> 'required|email|unique:staff',
+            'first_name'=>'required',
+            'last_name'=>'required',
+            'phone'=>'digits:10'
+
+        ]);
+
         $Pf_Id=$this->create_Pf_Id();
         $first_name = $request['first_name'];
         $last_name = $request['last_name'];
