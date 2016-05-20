@@ -31,13 +31,13 @@
                 <div class="input-field col s6">
                     {{--<i class="material-icons">perm_identity</i>--}}
                     <label for="first_name" class="active">First Name</label>
-
-                    <input class="validate" type="text" name="first_name" id="first_name" required>
+                    <input class="validate" type="text" name="first_name" id="first_name" onblur="this.value=this.value.toUpperCase()" required>
                 </div>
                 <div class="input-field col s6">
                     {{--<i class="material-icons">perm_identity</i>--}}
-                    <input id="last_name" type="text" class="validate valid" name="last_name" required>
                     <label for="last_name" class="active">Last Name</label>
+                    <input id="last_name" type="text" class="validate valid" name="last_name" onblur="this.value=this.value.toUpperCase()" required>
+
                 </div>
             </div>
 
@@ -71,21 +71,22 @@
             </div>
             <div class="row">
                 <div class="input-field col s6">
-                    <input id="adress1" type="text" class="validate" name ='adress1' required>
+
+                    <input id="adress1" type="text" class="validate" name ='adress1' onblur="this.value=this.value.toUpperCase()" required>
                     <label for="adress1" >Adress1</label>
                 </div>
                 <div class="input-field col s6">
-                    <input id="adress2" type="text" class="validate" name ='adress2' required>
+                    <input id="adress2" type="text" class="validate" name ='adress2' onblur="this.value=this.value.toUpperCase()" required>
                     <label for="adress2" >Adress2</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s6">
-                    <input id="adress3" type="text" class="validate" name ='adress3' required>
+                    <input id="adress3" type="text" class="validate" name ='adress3' onblur="this.value=this.value.toUpperCase()" required>
                     <label for="adress3" >Adress3</label>
                 </div>
                 <div class="input-field col s6">
-                    <input id="adress4" type="text" class="validate" name ='adress4'>
+                    <input id="adress4" type="text" class="validate" name ='adress4' onblur="this.value=this.value.toUpperCase()">
                     <label for="adress4" >Adress4</label>
                 </div>
             </div>

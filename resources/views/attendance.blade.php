@@ -19,7 +19,7 @@ use App\attendance;
                     <td>{{$el->date}}</td>
                     </tr>
             @endforeach
-                <option name="counter" value="kok"</option>
+                <option name="counter" value="kok"></option>
 
         </select>
     </div>

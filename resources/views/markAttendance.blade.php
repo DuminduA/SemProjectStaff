@@ -43,6 +43,7 @@
         </div>
         <input type="hidden" name="_token" value="{{Session::token()}}">
     </form>
+{{--    <form method="link" action="{{route('attendancetable')}}">--}}
     <form method="link" action="{{url("attendance")}}">
         <div id="but1">
             <button class="btn waves-effect waves-light" type="submit" name="action">View Attendance

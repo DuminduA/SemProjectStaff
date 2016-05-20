@@ -63,13 +63,13 @@ class StaffController extends Controller
        // $staff->username=$username;
 
         $staff->save();
-        return redirect()->route('dashbord');
+        return view('staffsignin');
 
     }
     public function postSignIn(Request $request){
 
         if(Auth::attempt(['username'=>$request['username'],'password'=>$request['password']])){
-            return redirect()->route('dashbord');
+            return redirect()->route('newItem');
 
         }
 
