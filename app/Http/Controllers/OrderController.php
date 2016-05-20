@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\CartItem;
+use App\Item;
 use App\Order;
 
 use App\ReturnItems;
@@ -23,7 +25,7 @@ class OrderController extends Controller
     public function newOrders(){
         $orders = Order::all();
         foreach ($orders as $order){
-            if($order->status==null&&$order->Cancel==null){
+            if($order->Cancel=="New Order"){
                 $newOrder[]=$order;
             }
         }
@@ -34,7 +36,7 @@ class OrderController extends Controller
     public function proceedOrders(){
         $orders = Order::all();
         foreach ($orders as $order){
-            if($order->status==true&&$order->Cancel=="Proceeded"){
+            if($order->Cancel=="Proceeded"){
                 $newOrder[]=$order;
             }
         }
@@ -53,6 +55,11 @@ class OrderController extends Controller
             if($order->Cancel=="Cancelled"){
                 $newOrder[]=$order;
             }
+        }
+        if (!isset($newOrder)){
+            $newOrder=array();
+            $heading = "No Proceed Orders";
+            return view('orderTable',['orders'=>$newOrder, 'heading'=>$heading]);
         }
 
         $heading = "Cancelled Orders Table";
@@ -110,13 +117,17 @@ class OrderController extends Controller
 
     public function proceedFinish($id){
         Order::where('id',$id)->update(['Cancel'=>"Finished"]);
-        Order::where('id',$id)->update(['status'=>null]);
         return redirect()->route('orderTable');
     }
 
     public function newAccept($id){
         Order::where('id',$id)->update(['Cancel'=>"Proceeded"]);
-        Order::where('id',$id)->update(['status'=>true]);
+        $cartitems = CartItem::where('order_id',$id)->get();
+        foreach ($cartitems as $ci){
+            $item = Item::where('id',$ci->itemID)->first();
+            $newQuantity = $item->quantity - $ci->quantity;
+            Item::where('id',$item->id)->update(['quantity'=>$newQuantity]);
+        }
         return redirect()->route('orderTable');
     }
 

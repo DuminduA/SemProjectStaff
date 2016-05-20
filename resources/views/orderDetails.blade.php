@@ -31,7 +31,6 @@ use App\Customer;
             <?php
                 $items = CartItem::where('order_id',$orderID)->get();
                 $order = Order::where('id',$orderID)->first();
-                $status = $order->status;
                 $cancel = $order->Cancel;
                 $customer = Customer::where('id',$order->customer_id)->first();
             ?>
@@ -48,8 +47,7 @@ use App\Customer;
             </tbody>
         </table>
         <div class="row">
-
-            @if($status==null&&$cancel==null)
+            @if($cancel=="New Order")
             <div id="data">
                 <h5> Customer Name : {{$customer->first_name}} {{$customer->last_name}} </h5>
                     Total Price : {{$order->totalPrice}}<br>
@@ -67,7 +65,7 @@ use App\Customer;
                 </div>
             </div>
 
-            @elseif($status==true&&$cancel=="Proceeded")
+            @elseif($cancel=="Proceeded")
                 <div id="data">
                     <h5> Customer Name : {{$customer->first_name}} {{$customer->last_name}} </h5>
                     Total Price : {{$order->totalPrice}}<br>

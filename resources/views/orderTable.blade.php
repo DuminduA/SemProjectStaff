@@ -40,9 +40,9 @@ use App\Customer;
                     </td>
                     <td>LKR. {{ $order->totalPrice }}</td>
                     <td>
-                        @if(($order->status==null)&&($order->Cancel==null))
+                        @if(($order->Cancel=="New Order"))
                             New Order
-                        @elseif(($order->status==true)&&($order->Cancel=="Proceeded"))
+                        @elseif(($order->Cancel=="Proceeded"))
                             Proceeded Order
                         @elseif(($order->Cancel=="Returned"))
                             Returned Order

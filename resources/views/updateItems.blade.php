@@ -32,6 +32,9 @@
             <div class="card-panel">
                 <h2><span class="blue-text text-darken-2">{{ $heading }}</span></h2>
             </div>
+            <div class="card-content">
+                <h3> {{$message}} </h3>
+            </div>
         </div>
         <table>
             <thead>

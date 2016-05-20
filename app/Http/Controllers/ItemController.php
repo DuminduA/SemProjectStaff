@@ -40,11 +40,13 @@ class ItemController extends Controller{
     public function getUpdateItems(){
         $items = Item::all();
         $heading = 'Inventory Items';
-        return view('updateItems',['items'=>$items,'heading'=>$heading]);
+        $message = "";
+        return view('updateItems',['items'=>$items,'heading'=>$heading,'message'=>$message]);
     }
 
     public function getNewItem(){
-        return view('newItem');
+        $msg="";
+        return view('newItem')->with(['msg'=> $msg]);
     }
 
 
@@ -67,18 +69,21 @@ class ItemController extends Controller{
         $item->sellPrice = $request['sellPrice'];
         $item->quantity = $request['quantity'];
         $item->staff_id = $staff->id;
-        $message = 'There is an error.';
+        $msg = 'There is an error.';
         $item->save();
         if ($item->save()){
-            $message = 'Successfully added';
+            $msg = 'Successfully added';
         }
-        return redirect()->route('newItem')->with(['message'=> $message]);
+        return view('newItem',['msg'=> $msg]);
     }
 
     public function deleteItem($itemID){
         $item = Item::where('itemID',$itemID)->first();
         $item->delete();
-        return redirect()->route('updateItems')->with(['message'=>'Successfully Deleted']);
+        $items = Item::all();
+        $heading = 'Inventory Items';
+        $message = "Item Successfully Deleted";
+        return view('updateItems',['items'=>$items,'heading'=>$heading,'message'=>$message]);
     }
 
     public function editItem($itemID){
